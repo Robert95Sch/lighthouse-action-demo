@@ -64,3 +64,10 @@ jobs:
           echo "Website goes live under: $SITE_URL" >> $GITHUB_STEP_SUMMARY
           echo "This job's status is ${{ job.status }}." >> $GITHUB_STEP_SUMMARY
           echo "[Read our docs](https://docs.ionos.space/)" >> $GITHUB_STEP_SUMMARY
+          echo "The job was automatically triggered by a ${{ github.event_name }} event."
+          
+      - name: The job has failed
+      if: ${{ failure() }}
+      run: |
+        echo "Oops, the deployment failed." >> $GITHUB_STEP_SUMMARY
+        echo "Find help to debug this [here](https://docs.ionos.space/)." >> $GITHUB_STEP_SUMMARY
