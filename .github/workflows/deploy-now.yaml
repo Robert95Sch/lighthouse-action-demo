@@ -60,7 +60,7 @@ jobs:
       - name: Job successful feedback
         if: ${{ success() }}
         run: |
-          echo '### Successfully published to Deploy Now :check:' >> $GITHUB_STEP_SUMMARY
+          echo '### Successfully published to Deploy Now :white_check_mark:' >> $GITHUB_STEP_SUMMARY
           echo "Changes went live under: ${{ steps.project.outputs.site-url }}" >> $GITHUB_STEP_SUMMARY
           echo ' ' >> $GITHUB_STEP_SUMMARY
           echo "[Visit documentation](https://docs.ionos.space/)" >> $GITHUB_STEP_SUMMARY
