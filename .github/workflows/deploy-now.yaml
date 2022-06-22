@@ -56,3 +56,7 @@ jobs:
           api-key: ${{ secrets.IONOS_API_KEY }}
           dist-folder: docs/.vuepress/dist
           runtime-placeholder-files: ${{ steps.template.outputs.runtime-placeholder-files }}
+          
+
+      - name: Adding markdown
+        run: echo '### Hello world! :rocket:' >> $GITHUB_STEP_SUMMARY
