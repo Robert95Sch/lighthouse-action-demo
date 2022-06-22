@@ -62,5 +62,5 @@ jobs:
         run: |
           echo '### Hello world! :rocket:' >> $GITHUB_STEP_SUMMARY
           echo "Website goes live under: $SITE_URL" >> $GITHUB_STEP_SUMMARY
-          echo "- [Read our docs](https://docs.ionos.space/)" >> $GITHUB_STEP_SUMMARY
           echo "This job's status is ${{ job.status }}." >> $GITHUB_STEP_SUMMARY
+          echo "[Read our docs](https://docs.ionos.space/)" >> $GITHUB_STEP_SUMMARY
