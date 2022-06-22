@@ -56,12 +56,21 @@ jobs:
           api-key: ${{ secrets.IONOS_API_KEY }}
           dist-folder: docs/.vuepress/dist
           runtime-placeholder-files: ${{ steps.template.outputs.runtime-placeholder-files }}
+        
+      - name: Lighthouse
+        uses: foo-software/lighthouse-check-action@master
+        id: lighthouseCheck
+        with:
+          urls: ${{ steps.project.outputs.site-url }}
 
       - name: Job successful feedback
         if: ${{ success() }}
         run: |
           echo '### Successfully published to Deploy Now :white_check_mark:' >> $GITHUB_STEP_SUMMARY
           echo "Changes went live under: ${{ steps.project.outputs.site-url }}" >> $GITHUB_STEP_SUMMARY
+          echo ' ' >> $GITHUB_STEP_SUMMARY
+          echo "Lighthouse results:" >> $GITHUB_STEP_SUMMARY
+          echo "${{ steps.lighthouseCheck.outputs.lighthouseCheckResults }}" >> $GITHUB_STEP_SUMMARY
           echo ' ' >> $GITHUB_STEP_SUMMARY
           echo "[Visit documentation](https://docs.ionos.space/)" >> $GITHUB_STEP_SUMMARY
           echo "[Log in to Deploy Now](https://docs.ionos.space/)" >> $GITHUB_STEP_SUMMARY
@@ -73,12 +82,4 @@ jobs:
           echo "Unfortunately, the deployment failed." >> $GITHUB_STEP_SUMMARY
           echo "Find help to debug this [here](https://docs.ionos.space/)." >> $GITHUB_STEP_SUMMARY
         
-      - name: Audit live URL
-        uses: jakejarvis/lighthouse-action@master
-        with:
-          url: ${{ steps.project.outputs.site-url }}
-      - name: Upload results as an artifact
-        uses: actions/upload-artifact@master
-        with:
-          name: report
-          path: './report'
+
