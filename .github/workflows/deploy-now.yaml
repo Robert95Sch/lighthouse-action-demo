@@ -44,7 +44,7 @@ jobs:
           SITE_URL: ${{ steps.project.outputs.site-url }}
         run: |
           npm ci
-          npm run lol
+          npm run build
 
       - name: Deploy to IONOS
         if: ${{ steps.project.outputs.deployment-enabled == 'true' }}
@@ -57,17 +57,18 @@ jobs:
           dist-folder: docs/.vuepress/dist
           runtime-placeholder-files: ${{ steps.template.outputs.runtime-placeholder-files }}
           
-
-      - name: Adding markdown
+          
+      - name: Job failed feedback
+        if: ${{ failure() }}
+        run: |
+          echo "Oops, the deployment failed." >> $GITHUB_STEP_SUMMARY
+          echo "Find help to debug this [here](https://docs.ionos.space/)." >> $GITHUB_STEP_SUMMARY
+          
+      - name: Job successful feedback
+        if: ${{ success() }}
         run: |
           echo '### Hello world! :rocket:' >> $GITHUB_STEP_SUMMARY
           echo "Website goes live under: $SITE_URL" >> $GITHUB_STEP_SUMMARY
           echo "This job's status is ${{ job.status }}." >> $GITHUB_STEP_SUMMARY
           echo "[Read our docs](https://docs.ionos.space/)" >> $GITHUB_STEP_SUMMARY
           echo "The job was automatically triggered by a ${{ github.event_name }} event."
-          
-      - name: The job has failed
-        if: ${{ failure() }}
-        run: |
-          echo "Oops, the deployment failed." >> $GITHUB_STEP_SUMMARY
-          echo "Find help to debug this [here](https://docs.ionos.space/)." >> $GITHUB_STEP_SUMMARY
