@@ -60,5 +60,5 @@ jobs:
 
       - name: Adding markdown
         run: | 
-        echo '### Hello world! :rocket:' >> $GITHUB_STEP_SUMMARY
-        echo "$SITE_URL" >> $GITHUB_STEP_SUMMARY
+          echo '### Hello world! :rocket:' >> $GITHUB_STEP_SUMMARY
+          echo "$SITE_URL" >> $GITHUB_STEP_SUMMARY
