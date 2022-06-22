@@ -61,18 +61,5 @@ jobs:
       - name: Adding markdown
         run: |
           echo '### Hello world! :rocket:' >> $GITHUB_STEP_SUMMARY
-          echo "$SITE_URL" >> $GITHUB_STEP_SUMMARY
-          echo "## :rocket: Pull Request Succesfully Deployed! :rocket:" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          echo "14 Kubernetes Containers successfully updated with the [following binaries]()" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          echo "Useful Links" >> $GITHUB_STEP_SUMMARY
-          echo "- [Deployment Guide]()" >> $GITHUB_STEP_SUMMARY
-          echo "- [Deployment confidence dashboard]()" >> $GITHUB_STEP_SUMMARY
-          echo "- [Incoming Alerts]()" >> $GITHUB_STEP_SUMMARY
-          echo "- [On-Call Engineers]()" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          echo "If things go :fire:" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          echo "|[:bangbang:  Rollback](https://github.com/)| [:pager:  Status]()|" >> $GITHUB_STEP_SUMMARY
-          echo "|---|---|" >> $GITHUB_STEP_SUMMARY
+          echo "Website goes live under: $SITE_URL" >> $GITHUB_STEP_SUMMARY
+          echo "- [Read our docs](https://docs.ionos.space/)" >> $GITHUB_STEP_SUMMARY
