@@ -56,18 +56,6 @@ jobs:
           api-key: ${{ secrets.IONOS_API_KEY }}
           dist-folder: docs/.vuepress/dist
           runtime-placeholder-files: ${{ steps.template.outputs.runtime-placeholder-files }}
-        
-        
-        
-    - name: Audit live URL
-      uses: jakejarvis/lighthouse-action@master
-      with:
-        url: 'https://jarv.is/'
-    - name: Upload results as an artifact
-      uses: actions/upload-artifact@master
-      with:
-        name: report
-        path: './report'
           
 
       - name: Adding markdown
