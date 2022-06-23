@@ -79,7 +79,7 @@ jobs:
           echo "PWA: ${{ fromJSON(steps.lighthouse.outputs.manifest)[0].summary.pwa }}" >> $GITHUB_STEP_SUMMARY
           echo ' ' >> $GITHUB_STEP_SUMMARY
           echo "[Visit documentation](https://docs.ionos.space/)" >> $GITHUB_STEP_SUMMARY
-          echo "[Log in to Deploy Now](https://docs.ionos.space/)" >> $GITHUB_STEP_SUMMARY
+          echo "[Log in to Deploy Now](https://ionos.space/)" >> $GITHUB_STEP_SUMMARY
           echo "[![Deploy Now](https://github.com/robert95sch/nextstarter/actions/workflows/deploy-now.yaml/badge.svg)](https://github.com/robert95sch/nextstarter/actions/workflows/deploy-now.yaml)" >> $GITHUB_STEP_SUMMARY
           
       - name: Job failed feedback
