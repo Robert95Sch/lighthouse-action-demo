@@ -57,11 +57,13 @@ jobs:
           dist-folder: docs/.vuepress/dist
           runtime-placeholder-files: ${{ steps.template.outputs.runtime-placeholder-files }}
         
-      - name: Lighthouse
-        uses: foo-software/lighthouse-check-action@master
-        id: lighthouseCheck
+      - name: Audit URL using Lighthouse
+        uses: treosh/lighthouse-ci-action@v9
+        id: lighthouse
         with:
-          urls: ${{ steps.project.outputs.site-url }}
+          urls: |
+            ${{ steps.project.outputs.site-url }}
+          temporaryPublicStorage: true # upload lighthouse report to the temporary storage
 
       - name: Job successful feedback
         if: ${{ success() }}
@@ -70,10 +72,11 @@ jobs:
           echo "Changes went live under: ${{ steps.project.outputs.site-url }}" >> $GITHUB_STEP_SUMMARY
           echo ' ' >> $GITHUB_STEP_SUMMARY
           echo "Lighthouse results:" >> $GITHUB_STEP_SUMMARY
-          echo "${{ steps.lighthouseCheck.outputs.lighthouseCheckResults.code }}" >> $GITHUB_STEP_SUMMARY
+          echo "${{ steps.lighthouse.outputs.manifest.[0].summary }}" >> $GITHUB_STEP_SUMMARY
           echo ' ' >> $GITHUB_STEP_SUMMARY
           echo "[Visit documentation](https://docs.ionos.space/)" >> $GITHUB_STEP_SUMMARY
           echo "[Log in to Deploy Now](https://docs.ionos.space/)" >> $GITHUB_STEP_SUMMARY
+          echo "[![Deploy Now](https://github.com/robert95sch/nextstarter/actions/workflows/deploy-now.yaml/badge.svg)](https://github.com/robert95sch/nextstarter/actions/workflows/deploy-now.yaml)" >> $GITHUB_STEP_SUMMARY
           
       - name: Job failed feedback
         if: ${{ failure() }}
@@ -81,5 +84,6 @@ jobs:
           echo '### Publishing to Deploy Now was not successful :cross:' >> $GITHUB_STEP_SUMMARY
           echo "Unfortunately, the deployment failed." >> $GITHUB_STEP_SUMMARY
           echo "Find help to debug this [here](https://docs.ionos.space/)." >> $GITHUB_STEP_SUMMARY
+          echo "[![Deploy Now](https://github.com/robert95sch/nextstarter/actions/workflows/deploy-now.yaml/badge.svg)](https://github.com/robert95sch/nextstarter/actions/workflows/deploy-now.yaml)" >> $GITHUB_STEP_SUMMARY
         
 
