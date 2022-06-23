@@ -65,18 +65,6 @@ jobs:
             ${{ steps.project.outputs.site-url }}
           temporaryPublicStorage: true # upload lighthouse report to the temporary storage
           
-      - name: Create the Badge
-        uses: schneegans/dynamic-badges-action@v1.4.0
-        id: badge
-        with:
-          auth: ${{ secrets.GIST_SECRET }}
-          gistID: <gist-ID>
-          filename: answer.json
-          label: Performance
-          message: is ${{ fromJSON(steps.lighthouse.outputs.manifest)[0].summary.performance }}
-          valColorRange: ${{ fromJSON(steps.lighthouse.outputs.manifest)[0].summary.performance }}}
-          maxColorRange: 100
-          minColorRange: 0
 
       - name: Job successful feedback
         if: ${{ success() }}
@@ -86,7 +74,6 @@ jobs:
           echo ' ' >> $GITHUB_STEP_SUMMARY
           echo "**Lighthouse results:**" >> $GITHUB_STEP_SUMMARY
           echo "Performance: ${{ fromJSON(steps.lighthouse.outputs.manifest)[0].summary.performance }}" >> $GITHUB_STEP_SUMMARY
-          echo "${{ steps.badge.output }}" >> $GITHUB_STEP_SUMMARY
           echo "Accessibility: ${{ fromJSON(steps.lighthouse.outputs.manifest)[0].summary.accessibility }}" >> $GITHUB_STEP_SUMMARY
           echo "Best-practices: ${{ fromJSON(steps.lighthouse.outputs.manifest)[0].summary.best-practices }}" >> $GITHUB_STEP_SUMMARY
           echo "SEO: ${{ fromJSON(steps.lighthouse.outputs.manifest)[0].summary.seo }}" >> $GITHUB_STEP_SUMMARY
