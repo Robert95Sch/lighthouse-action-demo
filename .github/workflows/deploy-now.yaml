@@ -72,7 +72,7 @@ jobs:
           echo "Changes went live under: ${{ steps.project.outputs.site-url }}" >> $GITHUB_STEP_SUMMARY
           echo ' ' >> $GITHUB_STEP_SUMMARY
           echo "Lighthouse results:" >> $GITHUB_STEP_SUMMARY
-          echo fromJson(${{ steps.lighthouse.outputs.manifest[0] }}) >> $GITHUB_STEP_SUMMARY
+          echo "fromJson(${{ steps.lighthouse.outputs.manifest[0] }})" >> $GITHUB_STEP_SUMMARY
           echo ' ' >> $GITHUB_STEP_SUMMARY
           echo "[Visit documentation](https://docs.ionos.space/)" >> $GITHUB_STEP_SUMMARY
           echo "[Log in to Deploy Now](https://docs.ionos.space/)" >> $GITHUB_STEP_SUMMARY
