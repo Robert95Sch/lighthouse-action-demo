@@ -1,4 +1,4 @@
-# vuepress sample with automated Ligthhouse tests
+# GitHub Actions Lighthouse Test Demo
 
 [![Deploy to IONOS](https://images.ionos.space/deploy-now-icons/deploy-to-ionos-btn.svg)](https://ionos.space/setup?repo=https://github.com/ionos-deploy-now/hello-vuepress)
 
