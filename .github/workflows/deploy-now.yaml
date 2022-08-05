@@ -77,7 +77,7 @@ jobs:
           echo "[Visit documentation](https://docs.ionos.space/)" >> $GITHUB_STEP_SUMMARY
           echo "[Log in to Deploy Now](https://ionos.space/)" >> $GITHUB_STEP_SUMMARY
           echo ' ' >> $GITHUB_STEP_SUMMARY
-          echo "[![Deploy Now](https://github.com/robert95sch/nextstarter/actions/workflows/deploy-now.yaml/badge.svg)](https://github.com/robert95sch/nextstarter/actions/workflows/deploy-now.yaml)" >> $GITHUB_STEP_SUMMARY
+        
           
       - name: Job failed feedback
         if: ${{ failure() }}
@@ -85,6 +85,6 @@ jobs:
           echo '### Publishing to Deploy Now was not successful :cross:' >> $GITHUB_STEP_SUMMARY
           echo "Unfortunately, the deployment failed." >> $GITHUB_STEP_SUMMARY
           echo "Find help to debug this [here](https://docs.ionos.space/)." >> $GITHUB_STEP_SUMMARY
-          echo "[![Deploy Now](https://github.com/robert95sch/nextstarter/actions/workflows/deploy-now.yaml/badge.svg)](https://github.com/robert95sch/nextstarter/actions/workflows/deploy-now.yaml)" >> $GITHUB_STEP_SUMMARY
+       
         
 
